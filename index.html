@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script type="module" src="/static/js/views/index.js"></script>
+    <title>Pagina Inicial</title>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav_link" data-link>Pagina Inicial</a>
+        <a href="/emprestimos" class="nav_link" data-link>Emprestimos</a>
+        <a href="/catalogo" class="nav_link" data-link>Catalogo</a>
+        <a href="/clientes" class="nav_link" data-link>Clientes</a>
+    </nav>
+
+            <h1>Pagina Inicial</h1>
+            <p>Bem vindo ao sistema de biblioteca</p>
+
+            <input type="date" id="data" >
+            <p id="Semana"></p>
+
+            <div>
+              <div>
+              <p>Emprestimo ativo</p>
+              <span id="emprestimo-ativo">0</span>
+              </div>
+
+              <div>
+              <p>Livros em Atraso</p>
+              <span id="Livros-em-Atraso">0</span>
+              </div>
+
+              <div>
+              <p>Usuario Cadastrado</p>
+              <span id="Usuario-Cadastrado">0</span>
+              </div>
+
+              <div>
+              <p>Total de Livros</p>
+              <span id="Total-de-Livros">0</span>
+              </div>
+            </div>
+
+
+        <div>
+            <button id="btn-emprestimo">+Novo Emprestimo</button>
+            <button id="btn-catalogo">Devolução</button>
+            <button id="btn-livros">+Addcionar Livros</button>
+            <button id="btn-usuarios">+Cadastrar Usuairio</button>
+        </div>
+
+
+        <table>
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Livro</th>
+                <th>Data de vencimento</th>
+                <th>Dias de atraso</th>
+                <th>ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Sara</td>
+                <td>Ordem paranormal</td>
+                <td>12-10-2026</td>
+                <td>10 dias</td>
+
+                <td>
+                <button>Devolver</button>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+
+
+</body>
+</html>
