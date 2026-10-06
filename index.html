@@ -55,6 +55,7 @@
             <div class="modal-inner">
             <form>
                 <h1>formulario</h1>
+                <button id="closeModal">fechar</button>
             </form>
             </div>
         </div>
@@ -84,8 +85,47 @@
             </tr>
         </tbody>
         </table>
-        <script type="module" src="/static/js/views/index.js"></script>
 
+ <script>
+const openBtn = document.getElementById('btn-emprestimo');
+const closeBtn = document.getElementById('closeModal');
+const modal = document.getElementById('modal');
+
+openBtn.addEventListener('click',() =>{
+    modal.classList.add('open');
+});
+closeBtn.addEventListener("click",() =>{
+    modal.classList.add('open');
+});
+</script>       
+      
+<style>
+            h1{
+    color: red;
+}
+
+.modal{
+    background-color: red;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3 ease-in-out;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal.open{
+        opacity: 1;
+        z-index: 999;
+    }
+
+
+}
+</style>
 
 </body>
 </html>
