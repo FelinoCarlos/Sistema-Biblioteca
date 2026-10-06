@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo | Biblioteca</title>
+  <link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+  <header class="topo">
+    <a href="index.html" class="voltar">← Voltar ao início</a>
+    <h1>Catálogo de Livros</h1>
+    <span class="carrinho-info"> <strong id="contador-carrinho">0</strong> item(ns)</span>
+  </header>
+
+  <main>
+    <section class="filtros">
+      <input type="search" id="busca" placeholder="Buscar por título ou autor...">
+      <select id="categoria">
+        <option value="todas">Todas as categorias</option>
+      </select>
+    </section>
+
+    <p id="resultado-info" class="resultado-info"></p>
+    <section id="lista-livros" class="grade"></section>
+  </main>
+
+  <div id="aviso" class="aviso" role="status"></div>
+
+  <script src="catalogo.js"></script>
+</body>
+</html>
