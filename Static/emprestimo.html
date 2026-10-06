@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empréstimos e Devoluções</title>
+</head>
+<body>
+<main>
+
+  //titulo e subtitulo
+    <header>
+      <div>
+        <h2>Empréstimos e Devoluções</h2>
+        <p>Gerencie os empréstimos e devoluções dos livros da livraria.</p>
+      </div>
+
+      //barra de pesquisa e filtro
+      <form role="search" aria-label="Filtrar empréstimos">
+        <input type="search" name="busca" placeholder="Buscar por usuário ou livro..." aria-label="Buscar por usuário ou livro">
+        <select name="status" aria-label="Filtrar por situação">
+          <option value="todos">Todos</option>
+          <option value="no-prazo">No prazo</option>
+          <option value="em-atraso">Em atraso</option>
+        </select>
+      </form>
+    </header>
+ 
+    <table>
+      <thead>
+     //titulos "tabela"
+        <tr>
+          <th scope="col">Usuário</th>
+          <th scope="col">Livro</th>
+          <th scope="col">Data de empréstimo</th>
+          <th scope="col">Data de vencimento</th>
+          <th scope="col">Status</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          //usuario 1
+          <td>Rodrigo Bertasso</td>
+          <td>O Pequeno Príncipe</td>
+          <td><time datetime="2026-08-10">2026-08-10</time></td>
+          <td><time datetime="2026-08-24">2026-08-24</time></td>
+          <td><span class="status em-atraso">Em atraso</span></td>
+          <td><button type="button">Devolver</button></td>
+        </tr>
+        <tr>
+          //usuario 2
+          <td>João Prates</td>
+          <td>Dom Quixote</td>
+          <td><time datetime="2026-08-15">2026-08-15</time></td>
+          <td><time datetime="2026-08-29">2026-08-29</time></td>
+          <td><span class="status em-atraso">Em atraso</span></td>
+          <td><button type="button">Devolver</button></td>
+        </tr>
+        <tr>
+          //usuario 3
+          <td>Guilherme</td>
+          <td>Hamlet</td>
+          <td><time datetime="2026-09-01">2026-09-01</time></td>
+          <td><time datetime="2026-09-15">2026-09-15</time></td>
+          <td><span class="status no-prazo">No prazo</span></td>
+          <td><button type="button">Devolver</button></td>
+        </tr>
+        <tr>
+          //usuario 4
+          <td>Aline Aguiar</td>
+          <td>Crime e Castigo</td>
+          <td><time datetime="2026-09-05">2026-09-05</time></td>
+          <td><time datetime="2026-09-19">2026-09-19</time></td>
+          <td><span class="status no-prazo">No prazo</span></td>
+          <td><button type="button">Devolver</button></td>
+        </tr>
+        <tr>
+          //usuario 5
+          <td>Lorenna Melgaço</td>
+          <td>Memórias Póstumas de Brás Cubas</td>
+          <td><time datetime="2026-09-10">2026-09-10</time></td>
+          <td><time datetime="2026-09-24">2026-09-24</time></td>
+          <td><span class="status no-prazo">No prazo</span></td>
+          <td><button type="button">Devolver</button></td>
+        </tr>
+      </tbody>
+    </table>
+ 
+    //Guia de paginas
+    <footer>
+      <p>Mostrando 5 de 7 empréstimos</p>
+      <nav aria-label="Paginação">
+        <button type="button" aria-label="Página anterior">&lt;</button>
+        <button type="button" aria-current="page">1</button>
+        <button type="button">2</button>
+        <button type="button" aria-label="Próxima página">&gt;</button>
+      </nav>
+    </footer>
+  </main>
+
+</body>
+</html>
