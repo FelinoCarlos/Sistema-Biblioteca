@@ -14,6 +14,27 @@
         <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
     <h1>Catálogo de Livros</h1>
     <span class="carrinho-info"> <strong id="contador-carrinho">0</strong> item(ns)</span>
+
+    <button id="btn-button" data-dialog="dialog1">+Addcionar Livros</button>
+
+    <dialog id="dialog1">
+    <h2>Addicionar Livros</h2>
+
+    <div></div>
+    <input type="file" name="imagem" accept="image/*" required>
+
+    <label>Titulo do Livro</label>
+    <input type="text" placeholder="Titulo do livro">
+
+    <label>Autor do Livro</label>
+    <input type="text" placeholder="Autor do livro">
+
+    <label>Quantidade</label>
+    <input type="number" placeholder="Quantidade">
+
+    <button class="close">Fechar</button>
+    <button type="submit">Confirmar</button>
+</dialog>
   </header>
 
   <main>
@@ -39,6 +60,6 @@
 
   <div id="aviso" class="aviso" role="status"></div>
 
-  <script src="catalogo.js"></script>
+  <script src="/Static/js/catalogo.js"></script>
 </body>
 </html>
