@@ -7,20 +7,42 @@
 </head>
 <body>
 
-    <h1>usuario</h1>
+    <header>
+     <nav>
+        <a href="/" class="nav_link" data-link>Pagina Inicial</a>
+        <a href="/emprestimo.html" class="nav_link" data-link>Emprestimos</a>
+        <a href="/catalogo.html" class="nav_link" data-link>Catalogo</a>
+        <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
+
+    </nav>
+
+    <h1>Usuario</h1>
     <p>Gerencie seus usuarios</p>
 
 
     <input type="search">
-    <button id="btn-livros">+Addicionar Livros</button>
+   <button id="btn-button" data-dialog="dialog1">+Addcionar Livros</button>
 
-    
-    <nav>
-         <a href="/" class="nav_link" data-link>Pagina Inicial</a>
-        <a href="/emprestimo.html" class="nav_link" data-link>Emprestimos</a>
-        <a href="/catalogo.html" class="nav_link" data-link>Catalogo</a>
-        <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
-    </nav>
+   <dialog id="dialog1">
+    <h2>Addicionar Livros</h2>
+
+    <div></div>
+    <input type="file" name="imagem" accept="image/*" required>
+
+    <label>Titulo do Livro</label>
+    <input type="text" placeholder="Titulo do livro">
+
+    <label>Autor do Livro</label>
+    <input type="text" placeholder="Autor do livro">
+
+    <label>Quantidade</label>
+    <input type="number" placeholder="Quantidade">
+
+    <button class="close">Fechar</button>
+    <button type="submit">Confirmar</button>
+</dialog>
+
+  </header>
 
         <table>
         <thead>
@@ -51,5 +73,6 @@
 
         <span>Mostrando 5/5 usaurios</span>
     
+        <script type="module" src="/Static/js/cliente.js"></script>
 </body>
 </html>

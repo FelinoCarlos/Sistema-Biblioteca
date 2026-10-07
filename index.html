@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/index.css">
-    <script type="module" src="/static/js/views/index.js"></script>
     <title>Pagina Inicial</title>
 </head>
 <body>
+  <header>
     <nav>
         <a href="/" class="nav_link" data-link>Pagina Inicial</a>
         <a href="/emprestimo.html" class="nav_link" data-link>Emprestimos</a>
         <a href="/catalogo.html" class="nav_link" data-link>Catalogo</a>
         <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
->>>>>>> 05d91ab11bded743a3a0173aee6748ed750464b5
-    </nav>
+  </nav>
 
             <h1>Pagina Inicial</h1>
             <p>Bem vindo ao sistema de biblioteca</p>
 
             <input type="date" id="data" >
             <p id="Semana"></p>
+    </header>
 
             <div>
               <div>
@@ -45,12 +45,99 @@
             </div>
 
 
+        
         <div>
-            <button id="btn-emprestimo">+Novo Emprestimo</button>
-            <button id="btn-catalogo">Devolução</button>
-            <button id="btn-livros">+Addcionar Livros</button>
-            <button id="btn-usuarios">+Cadastrar Usuairio</button>
+            <button id="btn-button" data-dialog="dialog1">+Novo Emprestimo</button>
+            <button id="btn-button" data-dialog="dialog2">Devolução</button>
+            <button id="btn-button" data-dialog="dialog3">+Addcionar Livros</button>
+            <button id="btn-button" data-dialog="dialog4">+Cadastrar Usuairio</button>
         </div>
+
+
+<dialog id="dialog1">
+    <form>
+      <h2>Novo emprestimo</h2>
+
+      <label for="usuario">Usuario</label>
+      <select name="usuario" id="usuario">
+        <option value="usuario1">Usuario 1</option>
+        <option value="usuario2">Usuario 2</option>
+        <option value="usuario3">Usuario 3</option>
+      </select>
+
+      <label for="livro">Livro</label>
+      <select name="livro" id="livro">
+        <option value="livro1">Livro 1</option>
+        <option value="livro2">Livro 2</option>
+        <option value="livro3">Livro 3</option>
+      </select>
+
+      <label for="data-emprestimo">Data de emprestimo</label>
+      <input type="date" name="data-emprestimo" id="data-emprestimo">
+
+      <label for="data-vencimento">Data de vencimento</label>
+      <input type="date" name="data-vencimento" id="data-vencimento">
+
+      <button class="close">Cancelar</button>
+      <button type="submit">Confirmar</button>
+    </form>
+</dialog>
+
+
+<dialog id="dialog2">
+    <h2>Processar Devolução</h2>
+
+    <input type="search">
+
+    <button class="close">Fechar</button>
+    <button type="submit">Confirmar</button>
+</dialog>
+
+<dialog id="dialog3">
+    <h2>Addicionar Livros</h2>
+
+    <div></div>
+    <input type="file" name="imagem" accept="image/*" required>
+
+    <label>Titulo do Livro</label>
+    <input type="text" placeholder="Titulo do livro">
+
+    <label>Autor do Livro</label>
+    <input type="text" placeholder="Autor do livro">
+
+    <label>Quantidade</label>
+    <input type="number" placeholder="Quantidade">
+
+    <button class="close">Fechar</button>
+    <button type="submit">Confirmar</button>
+</dialog>
+
+<dialog id="dialog4">
+    <h2>Cadastrar usuario</h2>
+
+    <label>Nome completo</label>
+    <input type="text" placeholder="Nome completo">
+
+    <label>CPF/CNPJ</label>
+    <input type="text" placeholder="CPF/CNPJ">
+
+    <label>Email</label>
+    <input type="email" placeholder="Email">
+
+    <label>Telefone</label>
+    <input type="tel" placeholder="11 99999-9999">
+
+
+
+
+
+    <button class="close">Fechar</button>
+    <button type="submit">Confirmar</button>
+</dialog>
+        
+
+
+
 
 
         <table>
@@ -79,6 +166,6 @@
         </tbody>
         </table>
 
-
+  <script type="module" src="/Static/js/index.js"></script>
 </body>
 </html>
