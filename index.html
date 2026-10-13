@@ -100,8 +100,90 @@
             <button class="btn-button" data-dialog="dialog4">+ Cadastrar Usuário</button>
         </div>
 
+<<<<<<< HEAD
         <section class="tabela-atrasos">
         <h2>Livros em atraso</h2>
+=======
+<dialog id="dialog1">
+    <form>
+      <h2>Novo emprestimo</h2>
+
+      <label for="usuario">Usuario</label>
+      <select name="usuario" id="usuario">
+        <option value="usuario1">Usuario 1</option>
+        <option value="usuario2">Usuario 2</option>
+        <option value="usuario3">Usuario 3</option>
+      </select>
+
+      <label for="livro">Livro</label>
+      <select name="livro" id="livro">
+        <option value="livro1">Livro 1</option>
+        <option value="livro2">Livro 2</option>
+        <option value="livro3">Livro 3</option>
+      </select>
+
+      <label for="data-emprestimo">Data de emprestimo</label>
+      <input type="date" name="data-emprestimo" id="data-emprestimo">
+
+      <label for="data-vencimento">Data de vencimento</label>
+      <input type="date" name="data-vencimento" id="data-vencimento">
+
+      <button class="close">Cancelar</button>
+      <button type="submit">Confirmar</button>
+    </form>
+</dialog>
+
+
+<dialog id="dialog2">
+    <h2>Processar Devolução</h2>
+
+    <input type="search">
+
+    <button class="close">Fechar</button>
+    <button type="submit">Confirmar</button>
+</dialog>
+
+<dialog id="dialog3">
+    <h2>Addicionar Livros</h2>
+
+    <div></div>
+    <input type="file" name="imagem" accept="image/*" required>
+
+    <label>Titulo do Livro</label>
+    <input type="text" placeholder="Titulo do livro">
+
+    <label>Autor do Livro</label>
+    <input type="text" placeholder="Autor do livro">
+
+    <label>Quantidade</label>
+    <input type="number" placeholder="Quantidade">
+
+    <button class="close">Fechar</button>
+    <button type="submit">Confirmar</button>
+</dialog>
+
+
+
+<dialog id="dialog4">
+    <form id="cadastroUsuario" >
+        <h2>Cadastrar usuário</h2>
+
+        <input type="text" id="nome" placeholder="Nome do usuário" >
+
+        <input type="text" id="cpf" placeholder="CPF" >
+
+        <input type="email" id="email" placeholder="E-mail">
+
+        <input type="tel" id="telefone" placeholder="Telefone">
+
+        <button type="submit">Cadastrar</button>
+
+        <button type="button" class="close">Fechar</button>
+    </form>
+</dialog>
+
+        
+>>>>>>> eae587f432dc17ce868a39d54215146eece80f0d
 
         <table>
             <thead>
