@@ -1,171 +1,276 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/Static/Css/index.css">
     <title>Pagina Inicial</title>
 </head>
 <body>
-  <header>
-    <nav>
-        <a href="/" class="nav_link" data-link>Pagina Inicial</a>
-        <a href="/emprestimo.html" class="nav_link" data-link>Emprestimos</a>
-        <a href="/catalogo.html" class="nav_link" data-link>Catalogo</a>
-        <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
-  </nav>
 
-            <h1>Pagina Inicial</h1>
-            <p>Bem vindo ao sistema de biblioteca</p>
+    <div class="layout">
 
-            <input type="date" id="data" >
-            <p id="Semana"></p>
-    </header>
+        <nav class="menu-lateral">
 
-            <div>
-              <div>
-              <p>Emprestimo ativo</p>
-              <span id="emprestimo-ativo">0</span>
-              </div>
-
-              <div>
-              <p>Livros em Atraso</p>
-              <span id="Livros-em-Atraso">0</span>
-              </div>
-
-              <div>
-              <p>Usuario Cadastrado</p>
-              <span id="Usuario-Cadastrado">0</span>
-              </div>
-
-              <div>
-              <p>Total de Livros</p>
-              <span id="Total-de-Livros">0</span>
-              </div>
+            <div class="logo">
+                    <h2>LIVRA</h2>
+                    <p>Sistema de Gestão Da Livraria</p>
             </div>
 
+            <a href="/" class="nav_link ativo" data-link>
+                Pagina Inicial
+            </a>
 
-        
-        <div>
-            <button id="btn-button" data-dialog="dialog1">+Novo Emprestimo</button>
-            <button id="btn-button" data-dialog="dialog2">Devolução</button>
-            <button id="btn-button" data-dialog="dialog3">+Addcionar Livros</button>
-            <button id="btn-button" data-dialog="dialog4">+Cadastrar Usuairio</button>
+            <a href="/emprestimo.html" class="nav_link" data-link>
+                Emprestimos
+            </a>
+
+            <a href="/catalogo.html" class="nav_link" data-link>
+                Catalogo
+            </a>
+
+            <a href="/cliente.html" class="nav_link" data-link>
+                Clientes
+            </a>
+
+            <div class="perfil">
+                <p>Admin Libraria</p>
+                <span>ADMINISTRADOR</span>
+           </div>
+
+        </nav>
+
+        <!-- CONTEUDO PRINCIPAL -->
+
+        <main class="conteudo">
+
+            <header class="cabecalho">
+                <div>
+
+                    <h1>Dashboard</h1>
+                    <p>Bem-vindo de volta! Aqui está um resumo da sua biblioteca hoje.</p>
+
+                </div>
+
+                <div class="informacoes-data">
+
+                    <input type="date" id="date">
+                    <p id="Semana"></p>
+
+                 </div>
+
+            </header>
+       
+        <div class="cards">
+
+
+            <div class="card">
+
+                <p>Empréstimos ativos</p>
+                <span id="emprestimo-ativo">0</span>
+
+            </div>
+
+            <div class="card card-atraso">
+
+                <p>Livros em atraso</p>
+                <span id="Livros-em-Atraso">0</span>
+                
+            </div>
+
+            <div class="card">
+
+                <p>Usuários cadastrados</p>
+                <span id="Usuario-Cadastrado">0</span>
+
+            </div>
+
+            <div class="card">
+
+                <p>Total de livros</p>
+                <span id="Total-de-Livros">0</span>
+
+            </div>
         </div>
 
+        <div class="acoes">
+            <button class="btn-button" data-dialog="dialog1">+ Novo Empréstimo</button>
+            <button class="btn-button" data-dialog="dialog2">Devolução</button>
+            <button class="btn-button" data-dialog="dialog3">+ Adicionar Livros</button>
+            <button class="btn-button" data-dialog="dialog4">+ Cadastrar Usuário</button>
+        </div>
 
-<dialog id="dialog1">
-    <form>
-      <h2>Novo emprestimo</h2>
-
-      <label for="usuario">Usuario</label>
-      <select name="usuario" id="usuario">
-        <option value="usuario1">Usuario 1</option>
-        <option value="usuario2">Usuario 2</option>
-        <option value="usuario3">Usuario 3</option>
-      </select>
-
-      <label for="livro">Livro</label>
-      <select name="livro" id="livro">
-        <option value="livro1">Livro 1</option>
-        <option value="livro2">Livro 2</option>
-        <option value="livro3">Livro 3</option>
-      </select>
-
-      <label for="data-emprestimo">Data de emprestimo</label>
-      <input type="date" name="data-emprestimo" id="data-emprestimo">
-
-      <label for="data-vencimento">Data de vencimento</label>
-      <input type="date" name="data-vencimento" id="data-vencimento">
-
-      <button class="close">Cancelar</button>
-      <button type="submit">Confirmar</button>
-    </form>
-</dialog>
-
-
-<dialog id="dialog2">
-    <h2>Processar Devolução</h2>
-
-    <input type="search">
-
-    <button class="close">Fechar</button>
-    <button type="submit">Confirmar</button>
-</dialog>
-
-<dialog id="dialog3">
-    <h2>Addicionar Livros</h2>
-
-    <div></div>
-    <input type="file" name="imagem" accept="image/*" required>
-
-    <label>Titulo do Livro</label>
-    <input type="text" placeholder="Titulo do livro">
-
-    <label>Autor do Livro</label>
-    <input type="text" placeholder="Autor do livro">
-
-    <label>Quantidade</label>
-    <input type="number" placeholder="Quantidade">
-
-    <button class="close">Fechar</button>
-    <button type="submit">Confirmar</button>
-</dialog>
-
-<dialog id="dialog4">
-    <h2>Cadastrar usuario</h2>
-
-    <label>Nome completo</label>
-    <input type="text" placeholder="Nome completo">
-
-    <label>CPF/CNPJ</label>
-    <input type="text" placeholder="CPF/CNPJ">
-
-    <label>Email</label>
-    <input type="email" placeholder="Email">
-
-    <label>Telefone</label>
-    <input type="tel" placeholder="11 99999-9999">
-
-
-
-
-
-    <button class="close">Fechar</button>
-    <button type="submit">Confirmar</button>
-</dialog>
-        
-
-
-
-
+        <section class="tabela-atrasos">
+        <h2>Livros em atraso</h2>
 
         <table>
-        <thead>
-            <h1>Livros em Atraso</h1>
-            <tr>
-                <th>Usuario</th>
-                <th>Livro</th>
-                <th>Data de vencimento</th>
-                <th>Dias de atraso</th>
-                <th>ações</th>
-            </tr>
-        </thead>
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Livro</th>
+                    <th>Data de vencimento</th>
+                    <th>Dias de atraso</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            <tr>
-                <td>Sara</td>
-                <td>Ordem paranormal</td>
-                <td>12-10-2026</td>
-                <td>10 dias</td>
-
-                <td>
-                <button>Devolver</button>
+            <tbody>
+                <tr>
+                    <td>Sara</td>
+                    <td>Ordem Paranormal</td>
+                    <td>12-10-2026</td>
+                    <td>10 dias</td>
+                    <td>
+                    <button type="button">Devolver</button>
                 </td>
-            </tr>
-        </tbody>
-        </table>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
 
-  <script type="module" src="/Static/js/index.js"></script>
+    <dialog id="dialog1">
+        <form>
+            <h2>Novo emprestimo</h2>
+
+            <label for="usuario">Usuario</label>
+            <select name="usuario" id="usuario">
+                <option value="usuario1">Usuario 1</option>
+                <option value="usuario2">Usuario 2</option>
+                <option value="usuario3">Usuario 3</option>
+            </select>
+
+            <label for="livro">Livro</label>
+            <select name="livro" id="livro">
+                <option value="livro1">Livro 1</option>
+                <option value="livro2">Livro 2</option>
+                <option value="livro3">Livro 3</option>
+            </select>
+
+            <label for="data-emprestimo">Data de emprestimo</label>
+            <input 
+                type="date"
+                name="data-emprestimo"
+                id="data-emprestimo"
+                required
+            >
+
+
+            <label for="data-vencimento">Data de vencimento</label>
+            <input 
+                type="date"
+                name="data-vencimento"
+                id="data-vencimento"
+                required
+            >
+            
+            <div class="botoes-modal">
+            <button type="button" class="close">Cancelar</button>
+            <button type="submit">Confirmar</button>
+            </div>
+        </form>
+
+    </dialog>
+
+
+        <dialog id="dialog2">
+            <form>
+                <h2>Processar Devolução</h2>
+
+            <label for="busca-devolucao">Buscar emprestimo</label>
+            <input 
+                type="search"
+                id="busca-devolucao"
+                name="busca-devolucao"
+                placeholder="Digite o nome do usuario ou do livro"
+                required
+            >
+            
+            <div class="botoes-modal">
+
+            <button type="button" class="close">Cancelar</button>
+            <button type="submit">Confirmar</button>
+
+            </div>
+            </form>
+    </dialog>
+
+        <dialog id="dialog3">
+
+        <form>
+        <h2>Adicionar livro</h2>
+
+        <label for="imagem-livro">Capa do livro</label>
+        <input
+            type="file"
+            name="imagem"
+            id="imagem-livro"
+            accept="image/*"
+            required
+        >
+
+        <label for="titulo-livro">Título do livro</label>
+        <input
+            type="text"
+            name="titulo"
+            id="titulo-livro"
+            placeholder="Digite o título do livro"
+            required
+        >
+
+        <label for="autor-livro">Autor do livro</label>
+        <input
+            type="text"
+            name="autor"
+            id="autor-livro"
+            placeholder="Digite o nome do autor"
+            required
+        >
+
+        <label for="quantidade-livros">Quantidade</label>
+        <input
+            type="number"
+            name="quantidade"
+            id="quantidade-livros"
+            min="1"
+            step="1"
+            placeholder="Ex.: 5"
+            required
+        >
+
+            <div class="botoes-modal">
+
+            <button type="button" class="close">Cancelar</button>
+            <button type="submit">Adicionar livro</button>
+
+                </div>
+            </form>
+        </dialog>
+
+        <dialog id="dialog4">
+        <form>
+            <h2>Cadastrar usuário</h2>
+
+            <label for="nome-completo">Nome completo</label>
+            <input type="text" id="nome-completo" placeholder="Nome completo">
+
+            <label for="cpf">CPF/CNPJ</label>
+            <input type="text" id="cpf" placeholder="CPF/CNPJ">
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="E-mail">
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" placeholder="11 99999-9999">
+
+            <button type="button" class="close">Cancelar</button>
+            <button type="submit">Confirmar</button>
+        </form>
+    </dialog>
+        
+
+<script type="module" src="/Static/js/index.js"></script>
+
+</div>
 </body>
 </html>

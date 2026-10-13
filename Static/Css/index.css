@@ -1,21 +1,118 @@
-h1{
-    color: red;
+/* configurações basicas do site */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.modal{
-    background-color: red;
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: all 0.3 ease-in-out;
-    z-index: -1;
+
+/* CORES QUE IREMOS UTILIZAR NA NOSSA BIBLIOTECA */
+
+:root {
+    color:  #123D35; /* COR PRINCIPAL */
+    color: #0B2B26; /* VERDE ESCURO COR "SEGUNDARI" */
+    color:  #F5F0E6; /* FUNDO */
+    color: #FFFFFF; /* BRANCO */
+    color: #C59A45; /* DOURADO */
+    color:  #26332F; /* TEXTO */
+    color: #777D78; /* TEXTO SECUNDARIO */
+    color: #E5DED2; /* BORDA DO SITE */
+    color:  #B95743; /* VERMELHO */
+
+}
+
+body {
+    min-height: 100vh;
+    background-color: #F5F0E6;
+    color: #26332f;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+}
+
+/* TÍTULOS E TEXTOS DO NOSSO SITE */
+
+
+h1,h2,h3,p {
+    margin: 0;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #26332F;
+}
+
+p {
+    color: #777D78;
+    line-height: 1.5;
+}
+
+/* BOTôES */
+
+button {
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s ease;/* UMA TRANSIÇÃO MAIS SUAVE AO PASSA O MOUSE NO BOTÃO  */
+}
+
+button:hover {
+    filter: brightness(0.94);
+}
+
+
+/* CAMPOS DO NOSSO FORMÚLARIO */
+
+input,select {
+    font-family: inherit;
+    font-size: 13px;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #C59A45;
+    outline-offset: 1px;
+}
+
+/* ESTRUTURA PRINCIPAL */
+
+.layout {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 100vh;
+}
 
+/* PARTE (MENU) LATERAL */
 
+.menu-lateral {
+    width: 240px;
+    min-height: 100vh;
+    flex-shrink: 0;
 
+    background-color: #123D35;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px 16px;
+    gap: 10px;
+}
+
+/* NOSSO PERFIL DE ADM */
+
+.perfil {
+    margin-top: auto;
+    padding: 20px 8px 0;
+
+    border-top: 1px solid #ffff30;
+}
+
+.perfil p {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.perfil span {
+    color: #D4E3DC;
+    font-size: 14px;
 }
