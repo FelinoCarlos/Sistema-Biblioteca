@@ -21,64 +21,45 @@
 
 
     <input type="search">
-  <button id="btn-button" data-dialog="dialog1">+Cadastrar Usuairio</button>
+ <button id="btn-button" data-dialog="dialog4">+Cadastrar Usuairio</button>
 
-<dialog id="dialog1">
-    <h2>Cadastrar usuario</h2>
+<dialog id="dialog4">
+    <form id="cadastroUsuario" >
+        <h2>Cadastrar usuário</h2>
 
-    <label>Nome completo</label>
-    <input type="text" placeholder="Nome completo">
+        <input type="text" id="nome" placeholder="Nome do usuário" >
 
-    <label>CPF</label>
-    <input type="text" placeholder="CPF">
+        <input type="text" id="cpf" placeholder="CPF" maxlength="11" >
 
-    <label>Email</label>
-    <input type="email" placeholder="Email">
+        <input type="email" id="email" placeholder="E-mail" required>
 
-    <label>Telefone</label>
-    <input type="tel" placeholder="11 99999-9999">
+        <input type="tel" id="telefone" placeholder="Telefone"  pattern="^[1-9]{2}\-[2-9][0-9]{7,8}$">
 
-    <label>Endereço</label>
-    <input type="text" placeholder="CEP">
+        <button type="submit"  id="cadastrar">Cadastrar</button>
 
-   
-
-    <button class="close">Fechar</button>
-    <button type="submit">Confirmar</button>
+        <button type="button" class="close">Fechar</button>
+    </form>
 </dialog>
-        
 
   </header>
 
-        <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Emprestimos ativos</th>
-                <th>Status</th>
-                <th>ação</th>
-            </tr>
-        </thead>
+    <table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th  class="columnAction" >Ações</th>
+        </tr>
+    </thead>
 
-        <tbody>
-            <tr>
-                <td>Sara</td>
-                <td>1</td>
-                <td>teste@gmail</td>
-                <td>10</td>
-                <td>Ruim</td>
-                
-                <td>
-                <button>editar</button>
-                </td>
-            </tr>
-        </tbody>
-        </table>
+    <tbody id="tabelaUsuarios">
+    </tbody>
+</table>
 
-        <span>Mostrando 5/5 usaurios</span>
     
         <script type="module" src="/Static/js/cliente.js"></script>
+        <script type="module" src="/Static/js/cadastro.js"></script>
 </body>
 </html>

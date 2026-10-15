@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/Static/Css/index.css">
+     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>Pagina Inicial</title>
+
 </head>
 <body>
   <header>
@@ -120,46 +122,21 @@
 
         <input type="text" id="nome" placeholder="Nome do usuário" >
 
-        <input type="text" id="cpf" placeholder="CPF" >
+        <input type="text" id="cpf" placeholder="CPF" maxlength="11" >
 
-        <input type="email" id="email" placeholder="E-mail">
+        <input type="email" id="email" placeholder="E-mail" required>
 
-        <input type="tel" id="telefone" placeholder="Telefone">
+        <input type="tel" id="telefone" placeholder="Telefone"  pattern="^[1-9]{2}\-[2-9][0-9]{7,8}$">
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit"  id="cadastrar">Cadastrar</button>
 
         <button type="button" class="close">Fechar</button>
     </form>
 </dialog>
 
-        
-
-        <table>
-        <thead>
-            <h1>Livros em Atraso</h1>
-            <tr>
-                <th>Usuario</th>
-                <th>Livro</th>
-                <th>Data de vencimento</th>
-                <th>Dias de atraso</th>
-                <th>ações</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>Sara</td>
-                <td>Ordem paranormal</td>
-                <td>12-10-2026</td>
-                <td>10 dias</td>
-
-                <td>
-                <button>Devolver</button>
-                </td>
-            </tr>
-        </tbody>
-        </table>
+   
 
   <script type="module" src="/Static/js/index.js"></script>
+<script type="module" src="/Static/js/cadastro.js"></script>
 </body>
 </html>

@@ -27,31 +27,22 @@ const cadastroUsuario = document.querySelector("#cadastroUsuario");
 cadastroUsuario.addEventListener("submit", (e) => {
     let enviar = true;
     
-    
-    if (!nome.value){
-         alert("Nome do cliente está em branco, favor preenchê-lo!");
+    if (!nome.value || !cpf.value || !email.value || !telefone.value){
+         alert("Preencha todos os campos!");
         enviar = false;
- 
-    }
-    if (!cpf.value){
-        alert("CPF do cliente está em branco, favor preenchê-lo!");
-           enviar = false;
-   
-    }
-    if (!email.value){
-        alert("Email do cliente está em branco, favor preenchê-lo!");
-           enviar = false;
- 
-    }
-    if (!telefone.value){
-        alert("Telefone do cliente está em branco, favor preenchê-lo!");
-           enviar = false;
-        
-    }
+
     if (!enviar){
     e.preventDefault();
     }
-    else cadastroUsuario(nome,cpf,email,telefone)
+   
+}});
+
+
+var mascara = document.querySelector("#cpf");
+
+mascara.addEventListener("blur", function(){
+   if(mascara.value) mascara.value = mascara.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/,"-");
 });
 
+        
 
