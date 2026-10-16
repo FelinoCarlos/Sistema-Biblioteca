@@ -96,22 +96,24 @@
 </dialog>
 
 <dialog id="dialog3">
+  <form id="CadastroLivro">
     <h2>Addicionar Livros</h2>
 
     <div></div>
-    <input type="file" name="imagem" accept="image/*" required>
+    <input type="file" name="imagem" accept="image/*" id="Imagem" required>
 
     <label>Titulo do Livro</label>
-    <input type="text" placeholder="Titulo do livro">
+    <input type="text" placeholder="Titulo do livro" id="titulo">
 
     <label>Autor do Livro</label>
-    <input type="text" placeholder="Autor do livro">
+    <input type="text" placeholder="Autor do livro" id="autor">
 
     <label>Quantidade</label>
-    <input type="number" placeholder="Quantidade">
+    <input type="number" placeholder="Quantidade" id="quantidade">
 
-    <button class="close">Fechar</button>
     <button type="submit">Confirmar</button>
+    <button class="close">Fechar</button>
+   </form>
 </dialog>
 
 

@@ -1,28 +1,27 @@
-const buttons = document.querySelectorAll("#btn-button");
+let editIndex = null;
 
-buttons.forEach(button => {
-    button.onclick = function() {
+const tbody = document.querySelector("#tabelaUsuarios");
+const dialog = document.getElementById("dialog4");
+const form = document.getElementById("cadastroUsuario");
 
-        const dialogId = button.dataset.dialog;
-        const dialog = document.getElementById(dialogId);
+const getItensBD = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
+const setItensBD = (items) => localStorage.setItem("db_items", JSON.stringify(items));
 
+document.querySelectorAll("#btn-button").forEach(button => {
+    button.onclick = () => {
+        editIndex = null;
+        form.reset();
         dialog.showModal();
     };
 });
 
-
-const closeButtons = document.querySelectorAll(".close");
-
-closeButtons.forEach(button => {
-    button.onclick = function() {
-        button.closest("dialog").close();
+document.querySelectorAll(".close").forEach(button => {
+    button.onclick = () => {
+        editIndex = null;
+        form.reset();
+        dialog.close();
     };
 });
-
-const tbody = document.querySelector("#tabelaUsuarios");
-
-const getItensBD = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
-const setItensBD = (items) => localStorage.setItem("db_items", JSON.stringify(items));
 
 function deleteItem(index) {
     const items = getItensBD();
@@ -30,6 +29,45 @@ function deleteItem(index) {
     setItensBD(items);
     loadItems();
 }
+
+function editItem(index) {
+    const item = getItensBD()[index];
+
+    document.getElementById("nome").value = item.nome;
+    document.getElementById("cpf").value = item.cpf;
+    document.getElementById("email").value = item.email;
+    document.getElementById("telefone").value = item.telefone;
+
+    editIndex = index;
+    dialog.showModal();
+}
+
+function salvarItem(e) {
+    e.preventDefault();
+
+    const item = {
+        nome: document.getElementById("nome").value,
+        cpf: document.getElementById("cpf").value,
+        email: document.getElementById("email").value,
+        telefone: document.getElementById("telefone").value,
+    };
+
+    const items = getItensBD();
+
+    if (editIndex !== null) {
+        items[editIndex] = item;
+        editIndex = null;
+    } else {
+        items.push(item);
+    }
+
+    setItensBD(items);
+    loadItems();
+    form.reset();
+    dialog.close();
+}
+
+form.addEventListener("submit", salvarItem);
 
 function insertItem(item, index) {
     const tr = document.createElement("tr");
@@ -43,11 +81,15 @@ function insertItem(item, index) {
     const tdAcao = document.createElement("td");
     tdAcao.className = "columnAction";
 
-    const btn = document.createElement("button");
-    btn.textContent = "Deletar";
-    btn.addEventListener("click", () => deleteItem(index));
+    const btnEditar = document.createElement("button");
+    btnEditar.textContent = "Editar";
+    btnEditar.addEventListener("click", () => editItem(index));
 
-    tdAcao.appendChild(btn);
+    const btnDeletar = document.createElement("button");
+    btnDeletar.textContent = "Deletar";
+    btnDeletar.addEventListener("click", () => deleteItem(index));
+
+    tdAcao.append(btnEditar, btnDeletar);
     tr.appendChild(tdAcao);
     tbody.appendChild(tr);
 }
