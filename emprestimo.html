@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empréstimos e Devoluções</title>
+    <link rel="stylesheet" href="Static/Css/base.css">
 </head>
 <body>
 <main>
@@ -27,6 +28,7 @@
       //barra de pesquisa e filtro
       <form role="search" aria-label="Filtrar empréstimos">
         <input type="search" name="busca" placeholder="Buscar por usuário ou livro..." aria-label="Buscar por usuário ou livro">
+        <button type="button" aria-current="Pesquisar">Pesquisar</button>
         <select name="status" aria-label="Filtrar por situação">
           <option value="todos">Todos</option>
           <option value="no-prazo">No prazo</option>
@@ -37,7 +39,9 @@
  
     <table>
       <thead>
-     //titulos "tabela"
+
+        /* titulos "tabela" */
+
         <tr>
           <th scope="col">Usuário</th>
           <th scope="col">Livro</th>
@@ -49,7 +53,9 @@
       </thead>
       <tbody>
         <tr>
-          //usuario 1
+
+          /* usuario 1 */
+
           <td>Rodrigo Bertasso</td>
           <td>O Pequeno Príncipe</td>
           <td><time datetime="2026-08-10">2026-08-10</time></td>
