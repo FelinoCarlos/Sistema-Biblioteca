@@ -240,6 +240,7 @@ textarea:focus {
 
 .busca input {
     flex: 1;
+    
 }
 
 .busca .btn {
@@ -299,4 +300,88 @@ tbody tr:nth-child(even) {
 
 tbody tr:hover {
     background-color: rgba(100, 120, 110, 0.20);
+}
+
+
+CSS
+
+/* =========================================================
+   COLE ESTE BLOCO NO FINAL DO base.css
+   (antes do @media, se quiser; o importante é não apagar nada)
+   ========================================================= */
+
+/* Menu com links soltos dentro do <nav> */
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Título e subtítulo da página */
+.titulo-pagina {
+    margin-bottom: 20px;
+}
+
+.titulo-pagina p {
+    color: #563624;
+}
+
+/* Busca: botão e select não esticam */
+.busca .btn {
+    flex: none;
+    width: auto;
+}
+
+.busca select {
+    width: auto;
+    flex: none;
+}
+
+/* Status da tabela de empréstimos */
+.status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+
+.status.no-prazo {
+    background-color: #64786E;
+}
+
+.status.em-atraso {
+    background-color: #512027;
+}
+
+/* Paginação */
+.paginacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.paginacao p {
+    margin-bottom: 0;
+}
+
+.paginacao .botoes {
+    display: flex;
+    gap: 6px;
+}
+
+
+
+
+/* Rodape */
+
+footer {
+    background-color: #1E2A20;
+    color: #D5C4A1;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
 }
