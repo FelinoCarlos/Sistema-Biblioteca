@@ -9,33 +9,68 @@
 </head>
 <body>
   <header class="topo">
-   <a href="/" class="nav_link" data-link>Pagina Inicial</a>
-        <a href="/emprestimo.html" class="nav_link" data-link>Emprestimos</a>
-        <a href="/catalogo.html" class="nav_link" data-link>Catalogo</a>
-        <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
+    <nav class="navegacao">
+
+        <a href="/index.html" class="nav_link">Página Inicial</a>
+        <a href="/emprestimo.html" class="nav_link">Empréstimos</a>
+        <a href="/catalogo.html" class="nav_link" aria-current="page">Catálogo</a>
+        <a href="/cliente.html" class="nav_link">Clientes</a>
+     </nav>
+
     <h1>Catálogo de Livros</h1>
-    <span class="carrinho-info"> <strong id="contador-carrinho">0</strong> item(ns)</span>
 
-    <button id="btn-button" data-dialog="dialog1">+Addcionar Livros</button>
+    <span class="carrinho-info">
+        <strong id="contador-carrinho">0</strong>
+        livro(s)
+    </span>
 
-    <dialog id="dialog1">
-    <h2>Addicionar Livros</h2>
+    <button id="btn-button" data-dialog="dialogLivro">
+        + Adicionar livros
+    </button>
 
-    <div></div>
-    <input type="file" name="imagem" accept="image/*" required>
+    <dialog id="dialogLivro">
+      <form id="formLivro">
+        <h2 id="tituloDialog">Adicionar Livro</h2>
 
-    <label>Titulo do Livro</label>
-    <input type="text" placeholder="Titulo do livro">
+        <label for="imagem">Imagem do Livro</label>
+        <input
+          type="file"
+          id="imagem"
+          accept="image/*"
+        >
 
-    <label>Autor do Livro</label>
-    <input type="text" placeholder="Autor do livro">
+        <label for="titulo">Título do livro</label>
+        <input
+          type="text"
+          id="titulo"
+          placeholder="titulo do livro"
+          required
+        >
 
-    <label>Quantidade</label>
-    <input type="number" placeholder="Quantidade">
+        <label for="autor">Autor do livro</label>
+        <input
+            type="text"
+            id="autor"
+            placeholder="Autor do livro"
+            required
+        >
 
-    <button class="close">Fechar</button>
-    <button type="submit">Confirmar</button>
+        <label for="quantidade">Quantidade</label>
+        <input
+            type="number"
+            id="quantidade"
+            min="1"
+            step="1"
+            placeholder="Quantidade"
+            required
+        >
+
+        <button type="submit">Salvar livro</button>
+        <button type="button" class="close">Cancelar</button>
+
+    </form>
 </dialog>
+      
   </header>
 
   <main>
@@ -49,14 +84,6 @@
     <p id="resultado-info" class="resultado-info"></p>
     <section id="lista-livros" class="grade"></section>
 
-    <div>
-       <img src="">
-       <h3>Pequeno Principe</h3>
-       <h4> o Autor de ai</h4>
-       <span>Disponivel</span>
-       <button>Reservar</button>
-
-    </div>
   </main>
 
   <div id="aviso" class="aviso" role="status"></div>
