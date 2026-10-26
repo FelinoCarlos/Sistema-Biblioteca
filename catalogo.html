@@ -4,75 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo | Biblioteca</title>
+  <link rel="stylesheet" href="/Static/Css/base.css">
   <link rel="stylesheet" href="catalogo.css">
-  <link rel="stylesheet" href="Static/Css/base.css">
 </head>
 <body>
   <header class="topo">
     <nav class="navegacao">
-
-        <a href="/index.html" class="nav_link">Página Inicial</a>
-        <a href="/emprestimo.html" class="nav_link">Empréstimos</a>
-        <a href="/catalogo.html" class="nav_link" aria-current="page">Catálogo</a>
-        <a href="/cliente.html" class="nav_link">Clientes</a>
-     </nav>
-
+      <a href="/index.html" class="nav_link">Página Inicial</a>
+      <a href="/emprestimo.html" class="nav_link">Empréstimos</a>
+      <a href="/catalogo.html" class="nav_link" aria-current="page">Catálogo</a>
+      <a href="/cliente.html" class="nav_link">Clientes</a>
+    </nav>
+ 
     <h1>Catálogo de Livros</h1>
-
-    <span class="carrinho-info">
-        <strong id="contador-carrinho">0</strong>
-        livro(s)
-    </span>
-
-    <button id="btn-button" data-dialog="dialogLivro">
-        + Adicionar livros
+ 
+    <button type="button" id="btn-buttonLivro">
+      + Adicionar livros
     </button>
-
-    <dialog id="dialogLivro">
-      <form id="formLivro">
-        <h2 id="tituloDialog">Adicionar Livro</h2>
-
-        <label for="imagem">Imagem do Livro</label>
-        <input
-          type="file"
-          id="imagem"
-          accept="image/*"
-        >
-
-        <label for="titulo">Título do livro</label>
-        <input
-          type="text"
-          id="titulo"
-          placeholder="titulo do livro"
-          required
-        >
-
-        <label for="autor">Autor do livro</label>
-        <input
-            type="text"
-            id="autor"
-            placeholder="Autor do livro"
-            required
-        >
-
-        <label for="quantidade">Quantidade</label>
-        <input
-            type="number"
-            id="quantidade"
-            min="1"
-            step="1"
-            placeholder="Quantidade"
-            required
-        >
-
-        <button type="submit">Salvar livro</button>
-        <button type="button" class="close">Cancelar</button>
-
-    </form>
-</dialog>
-      
   </header>
-
+ 
+  <dialog id="dialogLivro">
+    <form id="formLivro">
+      <h2 id="tituloDialog">Adicionar Livro</h2>
+ 
+      <label for="imagem">Imagem do Livro</label>
+      <input type="file" id="imagem" accept="image/*">
+ 
+      <label for="titulo">Título do livro</label>
+      <input type="text" id="titulo" placeholder="Título do livro" required>
+ 
+      <label for="autor">Autor do livro</label>
+      <input type="text" id="autor" placeholder="Autor do livro" required>
+ 
+      <label for="categoriaLivro">Categoria</label>
+      <select id="categoriaLivro">
+        <option value="">Selecione</option>
+      </select>
+ 
+      <label for="quantidade">Quantidade</label>
+      <input
+        type="number"
+        id="quantidade"
+        min="1"
+        step="1"
+        placeholder="Quantidade"
+        required
+      >
+ 
+      <button type="submit">Salvar livro</button>
+      <button type="button" class="close">Cancelar</button>
+    </form>
+  </dialog>
+ 
   <main>
     <section class="filtros">
       <input type="search" id="busca" placeholder="Buscar por título ou autor...">
@@ -80,14 +63,11 @@
         <option value="todas">Todas as categorias</option>
       </select>
     </section>
-
+ 
     <p id="resultado-info" class="resultado-info"></p>
     <section id="lista-livros" class="grade"></section>
-
   </main>
-
-  <div id="aviso" class="aviso" role="status"></div>
-
+ 
   <script src="/Static/js/catalogo.js"></script>
 </body>
 </html>
