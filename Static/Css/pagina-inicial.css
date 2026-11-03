@@ -1,0 +1,215 @@
+
+/* Cabeçalho da página inicial */
+
+.cabecalho-inicial {
+    background-color: #1E2A20;
+    color: #D5C4A1;
+    padding: 15px 0;
+}
+
+.menu-inicial {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.menu-inicial a {
+    color: #D5C4A1;
+    text-decoration: none;
+}
+
+.menu-inicial a:hover {
+    color: #64786E;
+}
+
+.menu-inicial .ativo {
+    color: #64786E;
+}
+
+/* Área principal */
+
+.painel-inicial {
+    width: 92%;
+    max-width: 1100px;
+    margin: 30px auto;
+    flex: 1;
+}
+
+/* Título e data */
+
+.boas-vindas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.boas-vindas h1 {
+    margin-bottom: 10px;
+}
+
+.informacoes-data {
+    min-width: 220px;
+}
+
+.data-inicial {
+    width: 100%;
+}
+
+/* Cartões do dashboard */
+
+.resumo-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card-indicador {
+    background-color: #FFFFFF;
+    color: #1E2A20;
+    border: 1px solid #DDD6C8;
+    border-left: 4px solid #64786E;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.card-indicador i {
+    font-size: 28px;
+    color: #64786E;
+}
+
+.card-indicador p {
+    margin: 12px 0;
+}
+
+.card-indicador span {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1E2A20;
+}
+
+/* Área de ações rápidas */
+
+.acoes-rapidas {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD6C8;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.acoes-rapidas h2 {
+    margin-top: 0;
+}
+
+.grupo-botoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #64786E;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.btn-button i {
+    font-size: 20px;
+}
+
+.btn-button:hover {
+    background-color: #1E2A20;
+}
+
+/* Janelas de cadastro e empréstimo */
+
+dialog {
+    width: 90%;
+    max-width: 450px;
+    max-height: 85vh;
+    overflow-y: auto;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #DDD6C8;
+    border-radius: 6px;
+    background-color: #F7F4ED;
+    color: #1E2A20;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog form {
+    display: grid;
+    gap: 12px;
+}
+
+dialog h2 {
+    margin-top: 0;
+}
+
+dialog label {
+    font-weight: bold;
+}
+
+dialog button {
+    background-color: #64786E;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+dialog button:hover {
+    background-color: #1E2A20;
+}
+
+/* Rodapé */
+
+.rodape-inicial {
+    background-color: #1E2A20;
+    color: #D5C4A1;
+    text-align: center;
+    padding: 12px;
+    margin-top: auto;
+}
+
+/* Ajustes para telas menores */
+
+@media (max-width: 600px) {
+    .menu-inicial {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 0 10px;
+    }
+
+    .boas-vindas {
+        display: block;
+    }
+
+    .informacoes-data {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .resumo-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .grupo-botoes {
+        grid-template-columns: 1fr;
+    }
+}
