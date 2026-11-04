@@ -238,7 +238,15 @@ function deleteItem(index) {
 
     if (!cliente) return;
 
-    if (!confirm(`Deseja excluir o cliente ${cliente.nome}?`)) {
+   const cpfNumeros = String(cliente.cpf || "").replace(/\D/g, "");
+   const emprestimos = JSON.parse(localStorage.getItem("db_emprestimos") || "[]");
+
+   if (emprestimos.some(e => !e.devolucao && e.cpf === cpfNumeros)) {
+        alert("Não é possível excluir este cliente, pois ele possui empréstimos ativos.");
+        return;
+    }
+
+    if (!confirm("Tem certeza que deseja excluir este cliente?")) {
         return;
     }
 
@@ -386,3 +394,4 @@ function loadItems() {
 
 
 loadItems();
+;

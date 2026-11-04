@@ -3,118 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empréstimos e Devoluções</title>
-    <link rel="stylesheet" href="Static/Css/base.css">
+    <title>Empréstimos | Biblioteca</title>
+    <link rel="stylesheet" href="/Static/Css/base.css">
 </head>
 <body>
 
-    <!-- Cabeçalho do site: só logo e menu -->
+      <!-- Cabeçalho do site: só logo e menu -->
     <header>
         <div class="barra">
             <a href="/" class="logo">Biblioteca</a>
             <nav>
-                <a href="/" class="nav_link" data-link>Pagina Inicial</a>
-                <a href="/emprestimo.html" class="nav_link ativo" data-link>Emprestimos</a>
-                <a href="/catalogo.html" class="nav_link" data-link>Catalogo</a>
-                <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
+            <a href="/index.html" class="nav_link ativo" data-link>Página Inicial</a>
+            <a href="/emprestimo.html" class="nav_link" data-link>Empréstimos</a>
+            <a href="/catalogo.html" class="nav_link" data-link>Catálogo</a>
+            <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
             </nav>
         </div>
     </header>
 
     <main>
-
-        <!-- Título e subtítulo -->
+        
+          <!-- Título e subtítulo -->
         <div class="titulo-pagina">
             <h2>Empréstimos e Devoluções</h2>
             <p>Gerencie os empréstimos e devoluções dos livros da livraria.</p>
         </div>
 
-        <!-- Barra de pesquisa e filtro -->
-        <form class="busca" role="search" aria-label="Filtrar empréstimos">
-            <input type="search" name="busca" placeholder="Buscar por usuário ou livro..." aria-label="Buscar por usuário ou livro">
-            <select name="status" aria-label="Filtrar por situação">
+        <section class="filtros">
+            <input type="search" id="buscaEmprestimo" placeholder="Buscar por livro ou cliente..." aria-label="Buscar empréstimo">
+            <select id="filtroStatus" aria-label="Filtrar por status">
                 <option value="todos">Todos</option>
-                <option value="no-prazo">No prazo</option>
-                <option value="em-atraso">Em atraso</option>
+                <option value="ativo">Em andamento</option>
+                <option value="atrasado">Atrasados</option>
+                <option value="devolvido">Devolvidos</option>
             </select>
-            <button type="submit" class="btn">Pesquisar</button>
-        </form>
+            <button type="button" id="btnNovoEmprestimo">+ Novo empréstimo</button>
+        </section>
 
-        <!-- Tabela -->
-        <div class="tabela-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Usuário</th>
-                        <th scope="col">Livro</th>
-                        <th scope="col">Data de empréstimo</th>
-                        <th scope="col">Data de vencimento</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Rodrigo Bertasso</td>
-                        <td>O Pequeno Príncipe</td>
-                        <td><time datetime="2026-08-10">2026-08-10</time></td>
-                        <td><time datetime="2026-08-24">2026-08-24</time></td>
-                        <td><span class="status em-atraso">Em atraso</span></td>
-                        <td><button type="button" class="btn btn-perigo">Devolver</button></td>
-                    </tr>
-                    <tr>
-                        <td>João Prates</td>
-                        <td>Dom Quixote</td>
-                        <td><time datetime="2026-08-15">2026-08-15</time></td>
-                        <td><time datetime="2026-08-29">2026-08-29</time></td>
-                        <td><span class="status em-atraso">Em atraso</span></td>
-                        <td><button type="button" class="btn btn-perigo">Devolver</button></td>
-                    </tr>
-                    <tr>
-                        <td>Guilherme</td>
-                        <td>Hamlet</td>
-                        <td><time datetime="2026-09-01">2026-09-01</time></td>
-                        <td><time datetime="2026-09-15">2026-09-15</time></td>
-                        <td><span class="status no-prazo">No prazo</span></td>
-                        <td><button type="button" class="btn btn-perigo">Devolver</button></td>
-                    </tr>
-                    <tr>
-                        <td>Aline Aguiar</td>
-                        <td>Crime e Castigo</td>
-                        <td><time datetime="2026-09-05">2026-09-05</time></td>
-                        <td><time datetime="2026-09-19">2026-09-19</time></td>
-                        <td><span class="status no-prazo">No prazo</span></td>
-                        <td><button type="button" class="btn btn-perigo">Devolver</button></td>
-                    </tr>
-                    <tr>
-                        <td>Lorenna Melgaço</td>
-                        <td>Memórias Póstumas de Brás Cubas</td>
-                        <td><time datetime="2026-09-10">2026-09-10</time></td>
-                        <td><time datetime="2026-09-24">2026-09-24</time></td>
-                        <td><span class="status no-prazo">No prazo</span></td>
-                        <td><button type="button" class="btn btn-perigo">Devolver</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <dialog id="dialogEmprestimo">
+            <form id="formEmprestimo">
+                <h2>Novo empréstimo</h2>
 
-        <!-- Guia de páginas -->
-        <div class="paginacao">
-            <p>Mostrando 5 de 7 empréstimos</p>
-            <nav class="botoes" aria-label="Paginação">
-                <button type="button" class="btn btn-secundario" aria-label="Página anterior">&lt;</button>
-                <button type="button" class="btn" aria-current="page">1</button>
-                <button type="button" class="btn btn-secundario">2</button>
-                <button type="button" class="btn btn-secundario" aria-label="Próxima página">&gt;</button>
-            </nav>
-        </div>
+                <label for="selectCliente">Cliente</label>
+                <select id="selectCliente" required>
+                    <option value="">Selecione o cliente</option>
+                </select>
 
+                <label for="selectLivro">Livro (somente disponíveis)</label>
+                <select id="selectLivro" required>
+                    <option value="">Selecione o livro</option>
+                </select>
+
+                <label for="prazoDias">Prazo (dias)</label>
+                <input type="number" id="prazoDias" min="1" max="90" step="1" value="7" required>
+
+                <p id="previaDevolucao"></p>
+                <p id="avisoEmprestimo" role="alert"></p>
+
+                <button type="submit" id="btnEmprestar">Emprestar</button>
+                <button type="button" class="close">Cancelar</button>
+            </form>
+        </dialog>
+
+        <p id="mensagemEmprestimos" aria-live="polite"></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Livro</th>
+                    <th>Cliente</th>
+                    <th>Emprestado em</th>
+                    <th>Devolver até</th>
+                    <th>Status</th>
+                    <th class="columnAction">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaEmprestimos"></tbody>
+        </table>
     </main>
 
-    <!-- Rodapé do site -->
-    <footer>
-        <p>Sistema de Biblioteca</p>
-    </footer>
-
+    <script type="module" src="/Static/js/emprestimo.js"></script>
 </body>
 </html>

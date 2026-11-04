@@ -288,6 +288,7 @@ th, td {
 th {
     background-color: #1E2A20;
     color: #D5C4A1;
+    
 }
 
 td {
@@ -319,32 +320,55 @@ nav {
 }
 
 /* Busca: botão e select não esticam */
-.busca .btn {
+.filtros .btnNovoEmprestimo {
     flex: none;
     width: auto;
 }
 
-.busca select {
+.filtros select {
     width: auto;
     flex: none;
 }
 
 /* Status da tabela de empréstimos */
-.status {
-    display: inline-block;
+
+.status-ativo{ 
+    margin-top: 7%;
+    background-color: #2A4567; 
+    color: #ffff;
+    font-weight: 600;
+     display: inline-block;
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 13px;
-    color: #FFFFFF;
-}
 
-.status.no-prazo {
-    background-color: #2A4567;
-}
-
-.status.em-atraso {
+}  
+.status-atrasado{ 
+    margin-top: 7%;
     background-color: #512027;
-}
+    font-weight: 600;
+    color: #ffff;
+    font-weight: 600;
+     display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+} 
+
+.status-devolvido{
+    margin-top: 4%;
+     background-color: #1e8e3e;
+     font-weight: 600;
+    color: #ffff;
+    font-weight: 600;
+     display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    
+    
+    }
 
 /* Paginação */
 .paginacao {
