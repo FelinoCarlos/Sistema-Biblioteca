@@ -50,16 +50,6 @@
       v = v.replace(/(\d{5})(\d{1,4})$/, "$1-$2");
       telefone.value = v;
     });
-
-    // Máscara do CPF: 000.000.000-00
-    const cpf = document.getElementById("cpf");
-    cpf.addEventListener("input", () => {
-      let v = cpf.value.replace(/\D/g, "").slice(0, 11);
-      v = v.replace(/(\d{3})(\d)/, "$1.$2");
-      v = v.replace(/(\d{3})(\d)/, "$1.$2");
-      v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-      cpf.value = v;
-    });
 </script>
 
   </header>
