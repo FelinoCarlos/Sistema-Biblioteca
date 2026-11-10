@@ -64,5 +64,116 @@ function refreshTime() {
 setInterval(refreshTime, 1000);
 
 
-        
+/* Isso configura o total de emprestimos, pegando os valores do emprestimo.js */
+const CHAVE_EMPRESTIMOS = "db_emprestimos";
+const CHAVE_LIVROS = "db_livros";
+const CHAVE_CLIENTES = "db_items";
+const tbody = document.querySelector("#tabelaAtrasados");
+const mensagem = document.querySelector("#mensagemAtrasados");
+const totalAtrasados = document.querySelector("#totalAtrasados");
+
+
+
+function ler(chave) {
+    try {
+        const dados = JSON.parse(localStorage.getItem(chave) || "[]");
+        return Array.isArray(dados) ? dados : [];
+    } catch {
+        return [];
+    }
+}
+
+const totalEmprestimos = document.querySelector("#totalEmprestimos");
+
+if (totalEmprestimos) {
+    totalEmprestimos.textContent = ler(CHAVE_EMPRESTIMOS).length;
+}
+
+const somenteNumeros = (texto) => String(texto ?? "").replace(/\D/g, "");
+
+function formatarISO(data) {
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, "0");
+    const dia = String(data.getDate()).padStart(2, "0");
+    return `${ano}-${mes}-${dia}`;
+}
+
+const hojeISO = () => formatarISO(new Date());
+
+function exibirData(iso) {
+    if (!iso) return "-";
+    const [ano, mes, dia] = iso.split("-");
+    return `${dia}/${mes}/${ano}`;
+}
+
+// Quantos dias passaram do prazo
+function diasDeAtraso(dataPrevista) {
+    const [a, m, d] = dataPrevista.split("-").map(Number);
+    const prevista = new Date(a, m - 1, d);
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+    return Math.round((hoje - prevista) / 86400000);
+}
+
+// Mesma regra da página de empréstimos
+function estaAtrasado(e) {
+    return !e.dataDevolucao && hojeISO() > e.dataPrevista;
+}
+
+function nomeDoCliente(cpf) {
+    const cliente = ler(CHAVE_CLIENTES).find(
+        (c) => somenteNumeros(c.cpf) === cpf
+    );
+    return cliente ? cliente.nome : "Cliente removido";
+}
+
+function tituloDoLivro(livroId) {
+    const livro = ler(CHAVE_LIVROS).find((l) => l.id === livroId);
+    return livro ? livro.titulo : "Livro removido";
+}
+
+function mostrarAtrasados() {
+    const atrasados = ler(CHAVE_EMPRESTIMOS)
+        .filter(estaAtrasado)
+        // Os mais atrasados primeiro
+        .sort((a, b) => a.dataPrevista.localeCompare(b.dataPrevista));
+
+    const linhas = atrasados.map((e) => {
+        const tr = document.createElement("tr");
+
+        [
+            tituloDoLivro(e.livroId),
+            nomeDoCliente(e.cpf),
+            exibirData(e.dataEmprestimo),
+            exibirData(e.dataPrevista),
+            `${diasDeAtraso(e.dataPrevista)} dia(s)`
+        ].forEach((valor) => {
+            const td = document.createElement("td");
+            td.textContent = valor;
+            tr.appendChild(td);
+        });
+
+        return tr;
+    });
+
+    tbody.replaceChildren(...linhas);
+
+    mensagem.textContent =
+        atrasados.length === 0
+            ? "Nenhum livro atrasado."
+            : `${atrasados.length}`;
+
+    if (totalAtrasados) totalAtrasados.textContent = atrasados.length;
+    
+    
+}
+
+mostrarAtrasados();
+
+// Atualiza se outra aba mexer nos empréstimos
+window.addEventListener("storage", (e) => {
+    if (e.key === CHAVE_EMPRESTIMOS) mostrarAtrasados();
+});
+
+
 

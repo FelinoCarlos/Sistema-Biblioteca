@@ -23,6 +23,8 @@
 
     <main class="painel-inicial">
 
+          
+
         <section class="boas-vindas">
             <div>
                 <h1>Página Inicial</h1>
@@ -30,6 +32,8 @@
             </div>
    
             <p id="time"></p>
+
+            
             
         </section>
 
@@ -37,14 +41,14 @@
 
             <div class="card-indicador">
                 <i class="bx bx-book-reader" id="book"></i>
-                <p>Empréstimos ativos</p>
-                 <strong>0</strong>
+                <p>Total de emprestimos</p>
+               <strong id="totalEmprestimos" > </strong>
             </div>
 
             <div class="card-indicador">
                 <i class="bx bx-time-five"></i>
                 <p>Livros em atraso</p>
-                <strong>0</strong>
+             <strong id="mensagemAtrasados"></strong>
             </div>
 
             <div class="card-indicador">
@@ -72,11 +76,6 @@
                 <button type="button" id="btnNovoEmprestimo">
                     <i class="bx bx-plus-circle"></i>
                     Novo empréstimo
-                </button>
-
-                <button type="button">
-                    <i class="bx bx-undo"></i>
-                    Devolução
                 </button>
 
                 <button type="button" class="btn-button" id="btn-buttonLivro">
@@ -178,6 +177,20 @@
         <button type="button" class="close">Fechar</button>
     </form>
 </dialog>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Livro</th>
+            <th>Cliente</th>
+            <th>Empréstimo</th>
+            <th>Prevista</th>
+            <th>Atraso</th>
+        </tr>
+    </thead>
+    <tbody id="tabelaAtrasados"></tbody>
+</table>
 
     <footer class="rodape-inicial">
         <p>Sistema de Gerenciamento de Biblioteca</p>
