@@ -132,48 +132,76 @@ function tituloDoLivro(livroId) {
     return livro ? livro.titulo : "Livro removido";
 }
 
+function devolver(id) {
+    const emprestimos = ler(CHAVE_EMPRESTIMOS);
+    const emprestimo = emprestimos.find((e) => e.id === id);
+
+    if (!emprestimo || emprestimo.dataDevolucao) return;
+    if (!confirm("Confirmar a devolução deste livro?")) return;
+
+    emprestimo.dataDevolucao = hojeISO();
+
+    const livros = ler(CHAVE_LIVROS);
+    const livro = livros.find((l) => l.id === emprestimo.livroId);
+
+    if (livro) {
+        livro.disponivel = Math.min(livro.disponivel + 1, livro.quantidade);
+        salvar(CHAVE_LIVROS, livros);
+    }
+
+    salvar(CHAVE_EMPRESTIMOS, emprestimos);
+    mostrarAtrasados();
+}
+function criarLinha(emprestimo) {
+    const tr = document.createElement("tr");
+
+    [
+        tituloDoLivro(emprestimo.livroId),
+        nomeDoCliente(emprestimo.cpf),
+        exibirData(emprestimo.dataEmprestimo),
+        exibirData(emprestimo.dataPrevista),
+        `${diasDeAtraso(emprestimo.dataPrevista)} dia(s)`
+    ].forEach((valor) => {
+        const td = document.createElement("td");
+        td.textContent = valor;
+        tr.appendChild(td);
+    });
+
+    const tdAcao = document.createElement("td");
+    const botao = document.createElement("button");
+    botao.type = "button";
+    botao.textContent = "Devolver";
+    botao.addEventListener("click", () => devolver(emprestimo.id));
+    tdAcao.appendChild(botao);
+    tr.appendChild(tdAcao);
+
+    return tr;
+}
+
 function mostrarAtrasados() {
     const atrasados = ler(CHAVE_EMPRESTIMOS)
         .filter(estaAtrasado)
         // Os mais atrasados primeiro
         .sort((a, b) => a.dataPrevista.localeCompare(b.dataPrevista));
 
-    const linhas = atrasados.map((e) => {
-        const tr = document.createElement("tr");
-
-        [
-            tituloDoLivro(e.livroId),
-            nomeDoCliente(e.cpf),
-            exibirData(e.dataEmprestimo),
-            exibirData(e.dataPrevista),
-            `${diasDeAtraso(e.dataPrevista)} dia(s)`
-        ].forEach((valor) => {
-            const td = document.createElement("td");
-            td.textContent = valor;
-            tr.appendChild(td);
-        });
-
-        return tr;
-    });
-
-    tbody.replaceChildren(...linhas);
+    tbody.replaceChildren(...atrasados.map(criarLinha));
 
     mensagem.textContent =
         atrasados.length === 0
             ? "Nenhum livro atrasado."
             : `${atrasados.length}`;
 
-    if (totalAtrasados) totalAtrasados.textContent = atrasados.length;
-    
-    
+    totalAtrasados.textContent = atrasados.length;
 }
 
+/* ---------- Inicialização ---------- */
 mostrarAtrasados();
 
-// Atualiza se outra aba mexer nos empréstimos
+// Atualiza se outra aba alterar empréstimos ou livros
 window.addEventListener("storage", (e) => {
-    if (e.key === CHAVE_EMPRESTIMOS) mostrarAtrasados();
+    if (e.key === CHAVE_EMPRESTIMOS || e.key === CHAVE_LIVROS) {
+        mostrarAtrasados();
+    }
 });
-
 
 
