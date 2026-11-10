@@ -17,12 +17,14 @@ cadastroUsuario.addEventListener("submit", (e) => {
     }
    
 }});
-
-
-var mascara = document.querySelector("#cpf");
-
-mascara.addEventListener("blur", function(){
-   if(mascara.value) mascara.value = mascara.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/,"-");
+  const cpf = document.getElementById("cpf");
+    cpf.addEventListener("input", () => {
+      let v = cpf.value.replace(/\D/g, "").slice(0, 11);
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      cpf.value = v;
+    });
 });
 
         
