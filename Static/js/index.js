@@ -1,79 +1,53 @@
-
+/* ---------- Cadastro de usuário ---------- */
 const nome = document.querySelector("#nome");
 const cpf = document.querySelector("#cpf");
 const email = document.querySelector("#email");
 const telefone = document.querySelector("#telefone");
 const cadastroUsuario = document.querySelector("#cadastroUsuario");
 
-cadastroUsuario.addEventListener("submit", (e) => {
-    let enviar = true;
-    
-    if (!nome.value || !cpf.value || !email.value || !telefone.value){
-         alert("Preencha todos os campos!");
-        enviar = false;
-
-    if (!enviar){
-    e.preventDefault();
+cadastroUsuario?.addEventListener("submit", (e) => {
+    if (!nome.value || !cpf.value || !email.value || !telefone.value) {
+        alert("Preencha todos os campos!");
+        e.preventDefault();
     }
-   
-}});
-
-
-var mascara = document.querySelector("#cpf");
-
-mascara.addEventListener("blur", function(){
-   if(mascara.value) mascara.value = mascara.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/,"-");
 });
 
-        
+const mascara = document.querySelector("#cpf");
 
-
-function getTotalClientes() {
-    try {
-        const dados = JSON.parse(
-            localStorage.getItem("db_items") || "[]"
-        );
-
-        return Array.isArray(dados) ? dados.length : 0;
-    } catch (erro) {
-        console.error("Erro ao carregar clientes:", erro);
-        return 0;
+mascara?.addEventListener("blur", function () {
+    if (mascara.value) {
+        mascara.value = mascara.value
+            .match(/.{1,3}/g)
+            .join(".")
+            .replace(/\.(?=[^.]*$)/, "-");
     }
-}
+});
 
-function mostrarTotalClientes() {
-    const elemento = document.getElementById("totalClientes");
-
-    if (elemento) {
-        elemento.textContent = getTotalClientes();
-    }
-}
-
-mostrarTotalClientes();
-
-
-var timeDisplay = document.getElementById("time");
-
+/* ---------- Relógio ---------- */
+const timeDisplay = document.getElementById("time");
 
 function refreshTime() {
-  var dateString = new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"});
-  var formattedString = dateString.replace(", ", " - ");
-  timeDisplay.innerHTML = formattedString;
+    const dateString = new Date().toLocaleString("pt-BR", {
+        timeZone: "America/Sao_Paulo"
+    });
+    if (timeDisplay) timeDisplay.textContent = dateString.replace(", ", " - ");
 }
 
+refreshTime();
 setInterval(refreshTime, 1000);
 
-
-/* Isso configura o total de emprestimos, pegando os valores do emprestimo.js */
+/* ---------- Chaves ---------- */
 const CHAVE_EMPRESTIMOS = "db_emprestimos";
 const CHAVE_LIVROS = "db_livros";
 const CHAVE_CLIENTES = "db_items";
+
+/* ---------- Elementos ---------- */
 const tbody = document.querySelector("#tabelaAtrasados");
 const mensagem = document.querySelector("#mensagemAtrasados");
-const totalAtrasados = document.querySelector("#totalAtrasados");
+const totalEmprestimos = document.querySelector("#totalEmprestimos");
+const totalClientes = document.querySelector("#totalClientes");
 
-
-
+/* ---------- Armazenamento ---------- */
 function ler(chave) {
     try {
         const dados = JSON.parse(localStorage.getItem(chave) || "[]");
@@ -83,14 +57,12 @@ function ler(chave) {
     }
 }
 
-const totalEmprestimos = document.querySelector("#totalEmprestimos");
-
-if (totalEmprestimos) {
-    totalEmprestimos.textContent = ler(CHAVE_EMPRESTIMOS).length;
-}
+const salvar = (chave, dados) =>
+    localStorage.setItem(chave, JSON.stringify(dados));
 
 const somenteNumeros = (texto) => String(texto ?? "").replace(/\D/g, "");
 
+/* ---------- Datas ---------- */
 function formatarISO(data) {
     const ano = data.getFullYear();
     const mes = String(data.getMonth() + 1).padStart(2, "0");
@@ -106,7 +78,6 @@ function exibirData(iso) {
     return `${dia}/${mes}/${ano}`;
 }
 
-// Quantos dias passaram do prazo
 function diasDeAtraso(dataPrevista) {
     const [a, m, d] = dataPrevista.split("-").map(Number);
     const prevista = new Date(a, m - 1, d);
@@ -115,10 +86,8 @@ function diasDeAtraso(dataPrevista) {
     return Math.round((hoje - prevista) / 86400000);
 }
 
-// Mesma regra da página de empréstimos
-function estaAtrasado(e) {
-    return !e.dataDevolucao && hojeISO() > e.dataPrevista;
-}
+/* ---------- Regras ---------- */
+const estaAtrasado = (e) => !e.dataDevolucao && hojeISO() > e.dataPrevista;
 
 function nomeDoCliente(cpf) {
     const cliente = ler(CHAVE_CLIENTES).find(
@@ -132,6 +101,7 @@ function tituloDoLivro(livroId) {
     return livro ? livro.titulo : "Livro removido";
 }
 
+/* ---------- Devolução ---------- */
 function devolver(id) {
     const emprestimos = ler(CHAVE_EMPRESTIMOS);
     const emprestimo = emprestimos.find((e) => e.id === id);
@@ -150,8 +120,10 @@ function devolver(id) {
     }
 
     salvar(CHAVE_EMPRESTIMOS, emprestimos);
-    mostrarAtrasados();
+    atualizarPainel();
 }
+
+/* ---------- Tabela de atrasados ---------- */
 function criarLinha(emprestimo) {
     const tr = document.createElement("tr");
 
@@ -168,40 +140,47 @@ function criarLinha(emprestimo) {
     });
 
     const tdAcao = document.createElement("td");
+    tdAcao.className = "columnAction";
+
     const botao = document.createElement("button");
     botao.type = "button";
     botao.textContent = "Devolver";
     botao.addEventListener("click", () => devolver(emprestimo.id));
+
     tdAcao.appendChild(botao);
     tr.appendChild(tdAcao);
-
     return tr;
 }
 
 function mostrarAtrasados() {
     const atrasados = ler(CHAVE_EMPRESTIMOS)
         .filter(estaAtrasado)
-        // Os mais atrasados primeiro
         .sort((a, b) => a.dataPrevista.localeCompare(b.dataPrevista));
 
-    tbody.replaceChildren(...atrasados.map(criarLinha));
-
-    mensagem.textContent =
-        atrasados.length === 0
-            ? "Nenhum livro atrasado."
-            : `${atrasados.length}`;
-
-    totalAtrasados.textContent = atrasados.length;
+    if (tbody) tbody.replaceChildren(...atrasados.map(criarLinha));
+    if (mensagem) mensagem.textContent = atrasados.length;
 }
 
-/* ---------- Inicialização ---------- */
-mostrarAtrasados();
+/* ---------- Cards do painel ---------- */
+function atualizarPainel() {
+    if (totalEmprestimos) {
+        totalEmprestimos.textContent = ler(CHAVE_EMPRESTIMOS).length;
+    }
+    if (totalClientes) {
+        totalClientes.textContent = ler(CHAVE_CLIENTES).length;
+    }
+    mostrarAtrasados();
+}
 
-// Atualiza se outra aba alterar empréstimos ou livros
+/* ---------- Inicialização e atualização automática ---------- */
+atualizarPainel();
+
+// Outras abas alteraram os dados
 window.addEventListener("storage", (e) => {
-    if (e.key === CHAVE_EMPRESTIMOS || e.key === CHAVE_LIVROS) {
-        mostrarAtrasados();
+    if ([CHAVE_EMPRESTIMOS, CHAVE_LIVROS, CHAVE_CLIENTES].includes(e.key)) {
+        atualizarPainel();
     }
 });
 
-
+// O emprestimo.js (nesta mesma aba) criou ou devolveu algo
+window.addEventListener("emprestimos-atualizados", atualizarPainel);

@@ -16,7 +16,7 @@ const aviso = document.querySelector("#avisoEmprestimo");
 const btnEmprestar = document.querySelector("#btnEmprestar");
 const busca = document.querySelector("#buscaEmprestimo");
 const filtroStatus = document.querySelector("#filtroStatus");
-const TotalEmprestimos = document.querySelector("#totalEmprestimos")
+
 
 /* ---------- Acesso ao armazenamento ---------- */
 function ler(chave) {
