@@ -1,3 +1,7 @@
+
+
+
+export function mount(){
 const form = document.querySelector("#formLivro");
 const dialog = document.querySelector("#dialogLivro");
 const listaLivros = document.querySelector("#lista-livros");
@@ -312,3 +316,4 @@ filtroCategoria?.addEventListener("change", mostrarLivros);
 // Inicialização
 carregarCategorias();
 mostrarLivros();
+}

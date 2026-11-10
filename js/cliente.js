@@ -3,6 +3,7 @@ let paginaAtual = 1;
 
 const ITENS_POR_PAGINA = 5;
 
+export function mount() {
 const tbody = document.querySelector("#tabelaUsuarios");
 const tabela = tbody?.closest("table");
 const dialog = document.getElementById("dialog4");
@@ -395,3 +396,4 @@ function loadItems() {
 
 loadItems();
 ;
+}

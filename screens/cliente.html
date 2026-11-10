@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/Static/Css/base.css">
-</head>
-<body>
 
-    <header>
-     <nav>
-         <a href="/index.html" class="nav_link ativo" data-link>Página Inicial</a>
-        <a href="/emprestimo.html" class="nav_link" data-link>Empréstimos</a>
-            <a href="/catalogo.html" class="nav_link" data-link>Catálogo</a>
-            <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
+ <div class="titulo-pagina">
+        <h1>Usuários</h1>
+        <p>Gerencie seus usuários.</p>
+</div>
 
-    </nav>
-
-    <h1>Usuario</h1>
-    <p>Gerencie seus usuarios</p>
-
-
-    <input type="search">
- <button id="btn-button" data-dialog="dialog4">+Cadastrar Usuairio</button>
+   <section class="filtros">
+        <input type="search" placeholder="Buscar usuário..." aria-label="Buscar usuário">
+        <button type="button" id="btn-button" data-dialog="dialog4">+ Cadastrar usuário</button>
+    </section>
 
 <dialog id="dialog4">
     <form id="cadastroUsuario" >
@@ -52,8 +37,6 @@
     });
 </script>
 
-  </header>
-
     <table>
     <thead>
         <tr>
@@ -70,9 +53,6 @@
 </table>
 
     
-        <script type="module" src="/Static/js/cliente.js"></script>
-        
-        
-</body>
-</html>
+        <script type="module" src="/js/cliente.js"></script>
+
 

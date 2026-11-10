@@ -1,4 +1,9 @@
+import { mostrarAviso, confirmar } from "./aviso.js";
+
+
+
 /* ---------- Chaves do localStorage (as mesmas dos outros módulos) ---------- */
+export function mount() {
 const CHAVE_CLIENTES = "db_items";
 const CHAVE_LIVROS = "db_livros";
 const CHAVE_EMPRESTIMOS = "db_emprestimos";
@@ -132,7 +137,7 @@ function emprestar(evento) {
     const dias = Number(inputPrazo.value);
 
     if (!cpf || !livroId || !Number.isInteger(dias) || dias < 1) {
-        alert("Preencha todos os campos corretamente.");
+         mostrarAviso("Preencha todos os campos corretamente.");
         return;
     }
 
@@ -140,7 +145,7 @@ function emprestar(evento) {
     const livro = livros.find((l) => l.id === livroId);
 
     if (!livro || livro.disponivel < 1) {
-        alert("Este livro não possui exemplares disponíveis.");
+        mostrarAviso("Este livro não possui exemplares disponíveis.");
         carregarOpcoes();
         return;
     }
@@ -153,7 +158,7 @@ function emprestar(evento) {
     );
 
     if (repetido) {
-        alert("Este cliente já está com um exemplar deste livro.");
+        mostrarAviso("Este cliente já está com um exemplar deste livro.");
         return;
     }
 
@@ -174,7 +179,7 @@ function emprestar(evento) {
         salvar(CHAVE_LIVROS, livros);
         salvar(CHAVE_EMPRESTIMOS, emprestimos);
     } catch {
-        alert("Não foi possível salvar o empréstimo.");
+        mostrarAviso("Não foi possível salvar o empréstimo.");
         return;
     }
 
@@ -307,3 +312,4 @@ busca.addEventListener("input", mostrarEmprestimos);
 filtroStatus.addEventListener("change", mostrarEmprestimos);
 
 mostrarEmprestimos();
+}

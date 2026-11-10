@@ -61,7 +61,7 @@
 
 .resumo-dashboard {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
     margin-bottom: 30px;
 }
@@ -70,25 +70,55 @@
     background-color: #FFFFFF;
     color: #1E2A20;
     border: 1px solid #DDD6C8;
-    border-left: 4px solid #64786E;
-    border-radius: 6px;
+    border-left: 5px solid #64786E; /* Cor padrão verde suave */
+    border-radius: 10px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.card-titulo {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64786E;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .card-indicador i {
     font-size: 28px;
     color: #64786E;
+    background-color: #F7F4ED;
+    padding: 8px;
+    border-radius: 8px;
 }
 
-.card-indicador p {
-    margin: 12px 0;
-}
-
-.card-indicador span {
+.card-indicador .valor {
     display: block;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 700;
     color: #1E2A20;
+    line-height: 1;
+}
+
+/* Destaque especial para o card de Alerta (Livros em atraso) */
+.card-indicador.card-alerta {
+    border-left-color: #C95555;
+}
+
+.card-indicador.card-alerta i {
+    color: #C95555;
+    background-color: #FDF2F2;
 }
 
 /* Área de ações rápidas */
@@ -129,51 +159,6 @@
 }
 
 .btn-button:hover {
-    background-color: #1E2A20;
-}
-
-/* Janelas de cadastro e empréstimo */
-
-dialog {
-    width: 90%;
-    max-width: 450px;
-    max-height: 85vh;
-    overflow-y: auto;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #DDD6C8;
-    border-radius: 6px;
-    background-color: #F7F4ED;
-    color: #1E2A20;
-}
-
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-dialog form {
-    display: grid;
-    gap: 12px;
-}
-
-dialog h2 {
-    margin-top: 0;
-}
-
-dialog label {
-    font-weight: bold;
-}
-
-dialog button {
-    background-color: #64786E;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-dialog button:hover {
     background-color: #1E2A20;
 }
 

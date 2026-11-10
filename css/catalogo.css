@@ -1,0 +1,83 @@
+/* Catálogo: grade de livros */
+
+.grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Card do livro — mesma linguagem dos cards da página inicial */
+.livro-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    color: #1E2A20;
+    border: 1px solid #DDD6C8;
+    border-top: 5px solid #64786E;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.livro-imagem {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background-color: #F7F4ED;
+    border-bottom: 1px solid #DDD6C8;
+}
+
+.livro-card > h3,
+.livro-card > p,
+.livro-card > .livro-acoes {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.livro-card > h3 {
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.livro-card > p {
+    margin-bottom: 4px;
+    color: #563624;
+    font-size: 14px;
+}
+
+.livro-card > p.livro-disponivel {
+    color: #3F5A4C;
+    font-weight: 700;
+}
+
+.livro-card > p.livro-indisponivel {
+    color: #C95555;
+    font-weight: 700;
+}
+
+/* Botões sempre no pé do card, mesmo quando os títulos têm alturas diferentes */
+.livro-acoes {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding: 14px 0 16px;
+}
+
+.livro-acoes button {
+    flex: 1;
+    padding: 7px 12px;
+    font-size: 14px;
+}
+
+/* Nenhum livro encontrado */
+.mensagem-vazia {
+    grid-column: 1 / -1;
+    padding: 36px 20px;
+    text-align: center;
+    color: #563624;
+    background-color: #FFFFFF;
+    border: 1px dashed #563624;
+    border-radius: 10px;
+}

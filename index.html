@@ -1,227 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Static/Css/base.css">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/index.css">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-
-    <title>Página Inicial</title>
 </head>
-
 <body>
-
-    <header class="cabecalho-inicial">
-        <nav class="menu-inicial">
-            <a href="/" class="nav_link ativo" data-link>Página Inicial</a>
-            <a href="/emprestimo.html" class="nav_link" data-link>Empréstimos</a>
-            <a href="/catalogo.html" class="nav_link" data-link>Catálogo</a>
-            <a href="/cliente.html" class="nav_link" data-link>Clientes</a>
-        </nav>
+    <header>
+        <div class="barra">
+            <a href="/" class="logo" data-link>Biblioteca</a>
+            <nav>
+                <a href="/" class="nav_link" data-link>Página Inicial</a>
+                <a href="/emprestimo" class="nav_link" data-link>Empréstimos</a>
+                <a href="/catalogo" class="nav_link" data-link>Catálogo</a>
+                <a href="/cliente" class="nav_link" data-link>Clientes</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="painel-inicial">
+    <main id="app"></main>
 
-          
-
-        <section class="boas-vindas">
-            <div>
-                <h1>Página Inicial</h1>
-                <p>Bem-vindo ao sistema de biblioteca!</p>
-            </div>
-   
-            <p id="time"></p>
-
-            
-            
-        </section>
-
-        <section class="resumo-dashboard">
-
-            <div class="card-indicador">
-                <i class="bx bx-book-reader" id="book"></i>
-                <p>Total de emprestimos</p>
-               <strong id="totalEmprestimos" > </strong>
-            </div>
-
-            <div class="card-indicador">
-                <i class="bx bx-time-five"></i>
-                <p>Livros em atraso</p>
-             <strong id="mensagemAtrasados"></strong>
-            </div>
-
-            <div class="card-indicador">
-                <i class="bx bx-user"></i>
-                <p>Usuários cadastrados</p>
-               <strong id="totalClientes">0</strong>
-            </div>
-
-            <div class="card-indicador">
-                <i class="bx bx-book"></i>
-                <p>Total de livros</p>
-                <strong id="resultado-info-index" class="resultado-info-index">0</strong>
-                <section id="lista-livros-index" class="grade-index"></section>
-            </div>
-
-
-        </section>
-
-        <section class="acoes-rapidas">
-            <h2>Ações rápidas</h2>
-            <p>Escolha uma opção para continuar.</p>
-
-            <div class="grupo-botoes">
-
-                <button type="button" id="btnNovoEmprestimo">
-                    <i class="bx bx-plus-circle"></i>
-                    Novo empréstimo
-                </button>
-
-                <button type="button" class="btn-button" id="btn-buttonLivro">
-                    <i class="bx bx-book-add"></i>
-                    Adicionar livros
-                </button>
-
-               <button id="btn-button" data-dialog="dialog4">
-                    <i class="bx bx-user-plus"></i>
-                    Cadastrar usuário
-                </button>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Janela de novo empréstimo -->
-  <dialog id="dialogEmprestimo">
-            <form id="formEmprestimo">
-                <h2>Novo empréstimo</h2>
- 
-                <label for="selectCliente">Cliente</label>
-                <select id="selectCliente" required>
-                    <option value="">Selecione o cliente</option>
-                </select>
- 
-                <label for="selectLivro">Livro (somente disponíveis)</label>
-                <select id="selectLivro" required>
-                    <option value="">Selecione o livro</option>
-                </select>
- 
-                <label for="prazoDias">Prazo (dias)</label>
-                <input type="number" id="prazoDias" min="1" max="90" step="1" value="7" required>
- 
-                <p id="previaDevolucao"></p>
-                <p id="avisoEmprestimo" role="alert"></p>
- 
-                <button type="submit" id="btnEmprestar">Emprestar</button>
-                <button type="button" class="close">Cancelar</button>
-            </form>
-        </dialog>
-
-
-    <!-- Janela de devolução -->
-    <dialog id="dialog2">
-        <form>
-            <h2>Processar devolução</h2>
-
-            <input type="search" placeholder="Buscar empréstimo">
-
-            <button type="button" class="close">Fechar</button>
-            <button type="submit">Confirmar</button>
-        </form>
-    </dialog>
-
-    <!-- Janela de cadastro de livros -->
-    <dialog id="dialogLivro">
-        <form id="formLivro">
-            <h2 id="tituloDialog">Adicionar livro</h2>
-
-            <label for="imagem">Imagem do livro</label>
-            <input type="file" id="imagem" accept="image/*">
-
-            <label for="titulo">Título do livro</label>
-            <input type="text" id="titulo" placeholder="Título do livro" required>
-
-            <label for="autor">Autor do livro</label>
-            <input type="text" id="autor" placeholder="Autor do livro" required>
-
-            <label for="categoriaLivro">Categoria</label>
-            <select id="categoriaLivro">
-                <option value="">Selecione</option>
-            </select>
-
-            <label for="quantidade">Quantidade</label>
-            <input type="number" id="quantidade" min="1" step="1" placeholder="Quantidade" required>
-
-            <button type="submit">Salvar livro</button>
-            <button type="button" class="close">Cancelar</button>
-        </form>
-    </dialog>
-
-    <!-- Janela de cadastro de usuários -->
-   <dialog id="dialog4">
-    <form id="cadastroUsuario" >
-        <h2>Cadastrar usuário</h2>
-
-        <input type="text" id="nome" name="nome" placeholder="Nome do usuário" required>
-
-        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
-
-        <input type="email" id="email" name="email" placeholder="E-mail" required>
-
-        <input type="tel" id="telefone" name="telefone" placeholder="(11) 98765-4321" maxlength="15" pattern="\(\d{2}\) \d{4,5}-\d{4}" required>
-
-        <button type="submit"  id="cadastrar">Cadastrar</button>
-
-        <button type="button" class="close">Fechar</button>
-    </form>
-</dialog>
-
-<script>
-    const telefone = document.getElementById("telefone");
-    telefone.addEventListener("input", () => {
-      let v = telefone.value.replace(/\D/g, "").slice(0, 11);
-      v = v.replace(/^(\d{2})(\d)/, "($1) $2");
-      v = v.replace(/(\d{5})(\d{1,4})$/, "$1-$2");
-      telefone.value = v;
-    });
-
-    const cpf = document.getElementById("cpf");
-    cpf.addEventListener("input", () => {
-      let v = cpf.value.replace(/\D/g, "").slice(0, 11);
-      v = v.replace(/(\d{3})(\d)/, "$1.$2");
-      v = v.replace(/(\d{3})(\d)/, "$1.$2");
-      v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-      cpf.value = v;
-    });
-</script>
-
-
-
-<table>
-    <thead>
-        <tr>
-            <th>Livro</th>
-            <th>Cliente</th>
-            <th>Empréstimo</th>
-            <th>Prevista</th>
-            <th>Atraso</th>
-             <th class="columnAction">Ações</th>
-        </tr>
-    </thead>
-    <tbody id="tabelaAtrasados"></tbody>
-</table>
-
-    <footer class="rodape-inicial">
+    <footer>
         <p>Sistema de Gerenciamento de Biblioteca</p>
     </footer>
 
-    
-  <script type="module" src="/Static/js/emprestimo.js"></script>
-  <script type="module" src="/Static/js/cliente.js"></script>
-  <script type="module" src="/Static/js/catalogo.js"></script>
-  <script type="module" src="/Static/js/index.js"></script>
+    <script type="module" src="/js/app.js"></script>
 </body>
-
 </html>
