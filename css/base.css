@@ -447,6 +447,7 @@ td.columnAction button + button {
     font-size: 13px;
     font-weight: 700;
     white-space: nowrap;
+    margin-top: 13px;
 }
 
 .status-ativo {

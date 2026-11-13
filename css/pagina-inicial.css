@@ -57,6 +57,22 @@
     width: 100%;
 }
 
+.div-time{
+    color: #64786E;
+  background-color:#64786E;
+;
+  width: 200px;
+  height: 25px;
+  border-radius: 10px;
+  padding: 1px;
+  
+}
+
+#time{
+ color: #ffffff;
+ margin-left: 20px;
+}
+
 /* Cartões do dashboard */
 
 .resumo-dashboard {
@@ -162,7 +178,11 @@
     background-color: #1E2A20;
 }
 
+.tab-home{
+    margin-top: 30px;
+}
 /* Rodapé */
+
 
 .rodape-inicial {
     background-color: #1E2A20;

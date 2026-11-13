@@ -3,7 +3,10 @@
 .grade {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 40px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 /* Card do livro — mesma linguagem dos cards da página inicial */
@@ -16,7 +19,12 @@
     border: 1px solid #DDD6C8;
     border-top: 5px solid #64786E;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+   box-shadow: 10px 5px 5px #707070;
+   
+}
+.livro-card:hover{
+    transition: 2s ease;
+    transform: scale(1.1);
 }
 
 .livro-imagem {
@@ -30,7 +38,7 @@
 .livro-card > h3,
 .livro-card > p,
 .livro-card > .livro-acoes {
-    margin-left: 16px;
+    margin-left: 20px;
     margin-right: 16px;
 }
 

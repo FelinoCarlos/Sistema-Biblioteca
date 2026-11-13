@@ -244,6 +244,7 @@ function criarLinha(emprestimo) {
         botao.addEventListener("click", () => devolver(emprestimo.id));
         tdAcao.appendChild(botao);
     }
+    
 
     tr.appendChild(tdAcao);
     return tr;
